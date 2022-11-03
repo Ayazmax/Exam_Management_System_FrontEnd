@@ -1,8 +1,8 @@
 <mat-toolbar class="nav-color">
     <a [routerLink]="'/'" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>home</mat-icon>
+      <mat-icon>import_contacts</mat-icon>
     </a>
-    <span>Exam Portal</span>
+    <span>Exam Management System</span>
     <span class="example-spacer"></span>
     <a
     *ngIf="!isLoggedIn"
@@ -17,6 +17,7 @@
 
     <a
     *ngIf="isLoggedIn && user"
+    routerLink="/admin/profile"
     mat-icon-button class="example-icon mr20 ml20" aria-label="Example icon-button with share icon">
       {{ login.getUser().username }}
     </a>

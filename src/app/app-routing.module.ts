@@ -1,8 +1,10 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { AdminGuard } from './pages/services/admin.guard';
 import { UserGuard } from './pages/services/user.guard';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -27,8 +29,17 @@ const routes: Routes = [
   {
     path: 'admin',
     component: DashboardComponent,
-    pathMatch: 'full',
     canActivate: [AdminGuard],
+    children:[
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
+        path: '',
+        component: WelcomeComponent,
+      },
+    ],
   },
   {
     path: 'user-dashboard',
