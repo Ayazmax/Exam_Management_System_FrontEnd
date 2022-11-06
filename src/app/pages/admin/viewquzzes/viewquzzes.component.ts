@@ -57,6 +57,20 @@ export class ViewquzzesComponent implements OnInit {
         }
     )
 
-  }
+  };
+
+  //delete quiz
+
+  deleteQuiz(qid: any) {
+    this._quiz.deleteQuiz(qid).subscribe(
+      (data)=>{
+        this.quizzes = this.quizzes.filter((quiz)=>quiz.qid != qid);
+      Swal.fire('Success', 'Exam Paper Deleted', 'success');
+    },
+    (error)=>{
+      Swal.fire('Error', "Error in deleteing Exam paper", 'error');
+    }
+    )
+  };
 
 }

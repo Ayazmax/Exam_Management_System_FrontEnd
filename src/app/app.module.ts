@@ -29,6 +29,10 @@ import {MatTableModule} from '@angular/material/table';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 import { ViewquzzesComponent } from './pages/admin/viewquzzes/viewquzzes.component';
+import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSelectModule} from '@angular/material/select';
+import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 
 
 @NgModule({
@@ -47,6 +51,8 @@ import { ViewquzzesComponent } from './pages/admin/viewquzzes/viewquzzes.compone
     ViewCategoriesComponent,
     AddCategoryComponent,
     ViewquzzesComponent,
+    AddQuizComponent,
+    UpdateQuizComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +69,8 @@ import { ViewquzzesComponent } from './pages/admin/viewquzzes/viewquzzes.compone
     MatToolbarModule,
     MatListModule,
     MatTableModule,
+    MatSlideToggleModule,
+    MatSelectModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
