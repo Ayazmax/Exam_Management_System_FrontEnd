@@ -15,6 +15,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { AdminGuard } from './pages/services/admin.guard';
 import { UserGuard } from './pages/services/user.guard';
 import { SignupComponent } from './pages/signup/signup.component';
+import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
@@ -79,8 +80,13 @@ const routes: Routes = [
   {
     path: 'user-dashboard',
     component: UserDashboardComponent,
-    pathMatch: 'full',
     canActivate: [UserGuard],
+    children: [
+      {
+        path: ':catId',
+        component: LoadQuizComponent,
+      },
+    ],
   },
   
 ];

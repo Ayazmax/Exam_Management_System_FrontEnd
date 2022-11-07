@@ -36,6 +36,10 @@ import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.compo
 import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questions.component';
 import { CommonModule } from '@angular/common';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { SidebarComponent as UserSidebar } from './pages/user/sidebar/sidebar.component';
+import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
+import { PaperInstructionsComponent } from './pages/user/paper-instructions/paper-instructions.component';
 
 
 @NgModule({
@@ -51,6 +55,7 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
     ProfileComponent,
     SidebarComponent,
     WelcomeComponent,
+    UserSidebar,
     ViewCategoriesComponent,
     AddCategoryComponent,
     ViewquzzesComponent,
@@ -58,6 +63,8 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
     UpdateQuizComponent,
     ViewQuestionsComponent,
     AddQuestionComponent,
+    LoadQuizComponent,
+    PaperInstructionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +83,8 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
     MatTableModule,
     MatSlideToggleModule,
     MatSelectModule,
-    CommonModule
+    CommonModule,
+    CKEditorModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
