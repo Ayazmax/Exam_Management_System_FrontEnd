@@ -4,6 +4,8 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
+import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questions.component';
@@ -15,7 +17,10 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { AdminGuard } from './pages/services/admin.guard';
 import { UserGuard } from './pages/services/user.guard';
 import { SignupComponent } from './pages/signup/signup.component';
+import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
+import { PaperInstructionsComponent } from './pages/user/paper-instructions/paper-instructions.component';
+import { StartComponent } from './pages/user/start/start.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
@@ -23,6 +28,11 @@ const routes: Routes = [
     path: 'signup',
     component: SignupComponent,
     pathMatch: 'full',
+  },
+  {
+    path: 'user/:userId',
+    component: UpdateProfileComponent,
+    pathMatch: "full",
   },
   {
     path: 'login',
@@ -39,6 +49,10 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AdminGuard],
     children:[
+      {
+        path: 'category/:cid',
+        component: UpdateCategoryComponent,
+      },
       {
         path: 'profile',
         component: ProfileComponent,
@@ -68,6 +82,10 @@ const routes: Routes = [
         component: UpdateQuizComponent,
       },
       {
+        path: 'question/:questionId',
+        component: UpdateQuestionComponent,
+      },
+      {
         path: 'view/questions/:qid/:title',
         component: ViewQuestionsComponent,
       },
@@ -83,10 +101,23 @@ const routes: Routes = [
     canActivate: [UserGuard],
     children: [
       {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
         path: ':catId',
         component: LoadQuizComponent,
       },
+      {
+        path: 'instructions/:qid',
+        component: PaperInstructionsComponent,
+      },
     ],
+  },
+  {
+    path: 'start/:qid',
+    component: StartComponent,
+    canActivate: [UserGuard],
   },
   
 ];

@@ -8,13 +8,22 @@ import baseUrl from './helper';
 export class UserService {
 
   constructor(
-    private http:HttpClient
+    private _http:HttpClient
   ) { }
 
   //add user
-
   public addUser(user:any) {
-    return this.http.post(`${baseUrl}/user/add`, user)
+    return this._http.post(`${baseUrl}/user/add`, user)
+  }
+
+  //get user by ID
+  public getUserById(userId: any) {
+    return this._http.get(`${baseUrl}/user/${userId}`)
+  }
+
+  //update user
+  public updateUser(users: any) {
+    return this._http.put(`${baseUrl}/user/update`, users);
   }
 
 }

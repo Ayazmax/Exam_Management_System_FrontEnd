@@ -42,4 +42,16 @@ export class ViewCategoriesComponent implements OnInit {
 
   }
 
+  deleteCategory(cid:any) {
+    this._category.deleteCategory(cid).subscribe(
+      (data)=>{
+        this.categories = this.categories.filter((category)=>category.cid != cid);
+        Swal.fire('Success', 'Subject Deleted', 'success');
+    },
+    (error)=>{
+      Swal.fire('Error', "Error in deleteing Subject", 'error');
+    }
+    )
+  };
+
 }

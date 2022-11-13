@@ -7,6 +7,12 @@
 
             <div mat-line>{{c.title}}</div>
             <div mat-line>{{c.description}}</div>
+            <div class="row">
+                <button class="mr40" mat-raised-button color="primary" [routerLink]="'/admin/category/' + c.cid">Update</button>
+            </div>
+            <div class="row">
+                <button mat-raised-button color="accent" (click)="deleteCategory(c.cid)">Delete</button>
+            </div>
             <mat-divider></mat-divider>
 
         </mat-list-item>

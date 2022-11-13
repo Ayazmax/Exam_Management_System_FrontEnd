@@ -43,8 +43,8 @@
             </div>
         </div>
     </mat-card-content>
-    <!-- <mat-card-actions class="text-center">
-        <button mat-raised-button color="primary">UPDATE</button>
-        <button mat-raised-button color="accent">SHARE</button>
-      </mat-card-actions> -->
+    <mat-card-actions class="text-center">
+        <button mat-raised-button color="primary" [routerLink]="'/user/' + login.getUser().id"><mat-icon>update</mat-icon> UPDATE PROFILE</button>
+        <!-- <button mat-raised-button color="accent">SHARE</button> -->
+      </mat-card-actions>
 </mat-card>

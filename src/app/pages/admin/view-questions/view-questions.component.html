@@ -34,6 +34,7 @@
 
                 <mat-card-actions class="ml20">
                     <button (click)="deleteQuestion(q.questionId)" mat-button color="warn">Delete</button>
+                    <button [routerLink]="'/admin/question/' + q.questionId" mat-button color="primary">Update</button>
                 </mat-card-actions>
                 
             </mat-card>

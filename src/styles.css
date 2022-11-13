@@ -22,3 +22,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mb20 {
     margin-bottom: 20px !important;
 }
+
+.ml10 {
+    margin-left: 10px !important;
+}
+
+.mr40 {
+    margin-right: 40px !important;
+}
