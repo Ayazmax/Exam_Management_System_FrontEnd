@@ -44,6 +44,7 @@ import { StartComponent } from './pages/user/start/start.component';
 import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
 import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -92,7 +93,8 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
     MatSlideToggleModule,
     MatSelectModule,
     CommonModule,
-    CKEditorModule
+    CKEditorModule,
+    MatProgressSpinnerModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

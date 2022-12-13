@@ -20,6 +20,8 @@ export class StartComponent implements OnInit {
 
   isSubmit=false;
 
+  timer: any;
+
   constructor(private locationst:LocationStrategy, private _route:ActivatedRoute, private _question: QuestionServiceService) { }
 
   ngOnInit(): void {
@@ -31,9 +33,16 @@ export class StartComponent implements OnInit {
     this._question.getQuestionsOfPaperTest(this.qid).subscribe((data:any)=> {
       console.log(data);
       this.questions = data;
+
+      this.timer = this.questions.length * 2 * 60;
+
       this.questions.forEach((q:any) => {
         q['givenAnswer'] = '';
       });
+
+      console.log(this.questions);
+      this.startTimer();
+
     },(error)=> {
       console.log(error);
       Swal.fire('Error', "Error loading questions", "error")
@@ -47,6 +56,10 @@ export class StartComponent implements OnInit {
     });
   }
 
+  reloadCurrentPage() {
+    window.location.reload();
+   }
+
   submitQuiz() {
     Swal.fire({
       title: 'Do you want to Submit the paper?',
@@ -55,8 +68,31 @@ export class StartComponent implements OnInit {
       icon: 'info',
     }).then((e)=> {
       if(e.isConfirmed) {
+        this.evalQuiz();
+      }
+    });
+  }
 
-        this.isSubmit = true;
+  startTimer() {
+    let t = window.setInterval(()=>{
+      //code
+      if(this.timer<=0) {
+        this.evalQuiz();
+        clearInterval(t);
+      }else {
+        this.timer--;
+      }
+    },1000)
+  }
+
+  getFormattedTime() {
+    let mm = Math.floor(this.timer/60);
+    let ss = this.timer-mm*60;
+    return `${mm} min : ${ss} sec`;
+  }
+
+  evalQuiz() {
+    this.isSubmit = true;
         //CALCULATION
         this.questions.forEach((q: any)=> {
           if(q.givenAnswer == q.answer) {
@@ -69,12 +105,9 @@ export class StartComponent implements OnInit {
             this.attempted++;
           }
         });
-      }
-      
-      console.log("Correct Answers : " + this.correctAnswer);
-      console.log("Marks got : "+ this.marksGot);
-      
-    });
+
+        console.log("Correct Answers : " + this.correctAnswer);
+        console.log("Marks got : "+ this.marksGot);
   }
 
 }
