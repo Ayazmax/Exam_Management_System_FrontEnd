@@ -1,0 +1,59 @@
+.main-container {
+    margin-top: 50px;
+    padding: 20px;
+    padding-bottom: 50px;
+    transition: margin-left 0.3s ease;
+  }
+
+  .content-container {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .content-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+
+  .content-container h3{
+    font-size: 20px;
+  }
+  
+  .pitch-cards {
+    display: flex;
+    justify-content: center; 
+  }
+  
+  .business-pitch-card {
+    flex: 0 0 calc(50% - 20px);
+    max-width: 900px; 
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .business-pitch-card h3 {
+    color: #007736;
+    margin-bottom: 10px;
+    font-size: 25px;
+    text-decoration: underline;
+  }
+  
+  .business-pitch-card p {
+    color: #555;
+    margin-bottom: 5px;
+  }
+
+  .business-pitch-card .pitch-info label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #0766AD;
+  }
+  

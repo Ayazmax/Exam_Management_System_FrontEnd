@@ -1,0 +1,28 @@
+.lsnavbar {
+    background-color: #3936e9;
+    overflow: hidden;
+  }
+  
+  .lsnavbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .lsnavbar li {
+    float: left;
+  }
+  
+  .lsnavbar a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .lsnavbar a:hover {
+    background-color: #ddd;
+    color: rgb(0, 0, 0);
+  }

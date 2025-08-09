@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { UserService } from '../services/user.service';
+import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,83 +7,81 @@ import Swal from 'sweetalert2';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent {
 
-  constructor(private userService:UserService, private snack:MatSnackBar) { }
+  userData: any = {};
+  selectedFile: File | null = null;
+  formValid: boolean = false;
 
-  public user={
-    username: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-  }
+  constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-  }
-
-  formSubmit() {
-    console.log(this.user);
-    if (this.user.username=='' || this.user.username==null) {
-      // alert('User is required!!');
-      this.snack.open("Username is required", 'ok', {
-        verticalPosition: 'bottom',
-      })
-      return;
-    }else if (this.user.password=='' || this.user.password==null) {
-      // alert('Password is required!!');
-      this.snack.open("Password is required", 'ok', {
-        verticalPosition: 'bottom',
-      })
-      return;
-    }else if (this.user.firstName=='' || this.user.firstName==null) {
-      // alert('First Name is required!!');
-      this.snack.open("First Name is required", 'ok', {
-        verticalPosition: 'bottom',
-      })
-      return;
-    }else if (this.user.lastName=='' || this.user.lastName==null) {
-      // alert('Last Name is required!!');
-      this.snack.open("Last Name is required", 'ok', {
-        verticalPosition: 'bottom',
-      })
-      return;
-    }else if (this.user.email=='' || this.user.email==null) {
-      // alert('Email is required!!');
-      this.snack.open("Email is required", 'ok', {
-        verticalPosition: 'bottom',
-      })
-      return;
-    }else if (this.user.phone=='' || this.user.phone==null) {
-      // alert('Phone Number is required!!');
-      this.snack.open("Phone Number is required", 'ok', {
-        verticalPosition: 'bottom',
-      })
+  submitForm() {
+    if (!this.userData.username || !this.userData.password || !this.userData.email || !this.selectedFile || !this.userData.userRole || !this.formValid) {
+      // Handle validation for required fields
       return;
     }
 
-    //validation
+    const formData: FormData = new FormData();
+    formData.append('file', this.selectedFile);
+    formData.append('username', this.userData.username);
+    formData.append('password', this.userData.password);
+    formData.append('email', this.userData.email);
+    formData.append('firstName', this.userData.firstName);
+    formData.append('lastName', this.userData.lastName);
+    formData.append('phone', this.userData.phone);
+    formData.append('userRole', this.userData.userRole);
+    formData.append('businessName', this.userData.businessName);
+    formData.append('businessType', this.userData.businessType);
 
-    //addUser: userservice
-    this.userService.addUser(this.user).subscribe(
-      (data:any)=>{
-        //success
-        console.log(data);
-        // alert('User Registered Successfully');
-        Swal.fire('Registered Successfully', 'User id is '+data.id, 'success');
+    this.http.post<any>('http://localhost:8080/api/users/register', formData).subscribe(
+      (response) => {
+        console.log('User registered successfully:', response);
+        this.showSuccessAlert();
+        this.resetForm();
       },
-      (error)=>{
-        //error
-        console.log(error);
-        // alert('Something went wrong');
-        this.snack.open("Something Went Wrong", 'ok', {
-          verticalPosition: 'bottom',
-        })
+      (error) => {
+        console.error('Error registering user:', error);
+        this.showErrorAlert();
       }
-    )
+    );
   }
 
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+      this.checkFormValidity();
+    }
+  }
 
+  resetForm() {
+    this.userData = {};
+    this.selectedFile = null;
+    this.formValid = false;
+  }
 
+  showSuccessAlert() {
+    Swal.fire({
+      icon: 'success',
+      title: 'Registration Successful',
+      text: 'User registered successfully!',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK'
+    });
+  }
+
+  showErrorAlert(message: string = 'An error occurred. Please try again later.') {
+    Swal.fire({
+      icon: 'error',
+      title: 'Registration Failed',
+      text: message,
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'OK'
+    });
+  }
+
+  checkFormValidity() {
+    // Check if all required fields are filled
+    this.formValid = !!this.userData.username && !!this.userData.password && !!this.userData.email && !!this.selectedFile && !!this.userData.userRole;
+  }
 }

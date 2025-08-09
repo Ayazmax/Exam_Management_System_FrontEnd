@@ -1,0 +1,144 @@
+<app-hnavbar></app-hnavbar>
+<div class="main-container">
+  <div class="side-panel" [ngClass]="{'collapsed': isCollapsed}">
+    <button class="toggle-btn" (click)="toggleSidePanel()">
+      <span class="material-icons">menu</span> 
+    </button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('ehome')">Home</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('vbpro')">Business Profile</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('bpro')">Edit Business Profile</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('vgoal')">View Goals</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('add-pitch')">Create Business Pitch</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('view-pitch')">View Business Pitch</button>
+  </div>
+
+  <div class="content-container">
+
+    <!-- Profile Details Section -->
+    <div class="profile-details">
+      <!-- Display Profile Picture -->
+      <div class="profile-picture">
+        <img [src]="userProfile?.profilePhoto" alt="Profile Picture">
+      </div>
+
+      <!-- Other Profile Details -->
+      <p><strong>User Name:</strong> {{ userProfile?.username }}</p>
+      <p><strong>Email:</strong> {{ userProfile?.email }}</p>
+      <p><strong>Contact No:</strong> {{ userProfile?.phone }}</p>
+      <p><strong>Business Name:</strong> {{ userProfile?.businessName }}</p>
+      <p><strong>Business Type:</strong> {{ userProfile?.businessType }}</p>
+
+      <ng-container *ngIf="userProfile?.product">
+        <p><strong>Product:</strong> {{ userProfile.product }}</p>
+      </ng-container>
+
+      <ng-container *ngIf="userProfile?.productDescription">
+        <p><strong>Product Description:</strong> {{ userProfile.productDescription }}</p>
+      </ng-container>
+
+      <ng-container *ngIf="userProfile?.productUniqueness">
+        <p><strong>Product Uniqueness:</strong> {{ userProfile.productUniqueness }}</p>
+      </ng-container>
+
+      <ng-container *ngIf="userProfile?.elevatorPitch">
+        <p><strong>Elevator Pitch:</strong> {{ userProfile.elevatorPitch }}</p>
+      </ng-container>
+
+      <ng-container *ngIf="userProfile?.targetAudience">
+        <p><strong>Target Audience:</strong> {{ userProfile.targetAudience }}</p>
+      </ng-container>
+
+      <ng-container *ngIf="userProfile?.lookingFor">
+        <p><strong>Currently looking for (Investment/ Partnership)?:</strong> {{ userProfile.lookingFor }}</p>
+      </ng-container>
+      <br><br><br><br>
+
+      <div class="investment" *ngIf="userProfile.lookingFor === 'Investment' || userProfile.lookingFor === 'Both'">
+        <h1><strong>Investment Details</strong></h1>
+        <ng-container *ngIf="userProfile?.investmentProduct">
+          <p><strong>For what product they need an investment currently:</strong> {{ userProfile.investmentProduct }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.noOfInvestors">
+          <p><strong>No of Investors currently available for product:</strong> {{ userProfile.noOfInvestors }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.capacityAvailable">
+          <p><strong>Amount of capital currently available for investment:</strong> {{ userProfile.capacityAvailable }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.investmentPlan">
+          <p><strong>Investment Plan:</strong> {{ userProfile.investmentPlan }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.investmentRequired">
+          <p><strong>Required amount of Investments?:</strong> {{ userProfile.investmentRequired }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.termsOfInvestmentOpportunity">
+          <p><strong>Terms of the investment opportunity:</strong> {{ userProfile.termsOfInvestmentOpportunity }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.ROI">
+          <p><strong>Expected return on investment (ROI):</strong> {{ userProfile.ROI }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.investmentBenefits">
+          <p><strong>Benefits of the Investment opportunity:</strong> {{ userProfile.investmentBenefits }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.investmentTimeline">
+          <p><strong>Timeline for the investment:</strong> {{ userProfile.investmentTimeline }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.closingDate">
+          <p><strong>Expected closing date:</strong> {{ userProfile.closingDate }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.fundingMilestone">
+          <p><strong>Funding Milestones:</strong> {{ userProfile.fundingMilestone }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.useOfFunds">
+          <p><strong>Use of Funds:</strong> {{ userProfile.useOfFunds }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.investmentCapital">
+          <p><strong>How the investment capital will be utilized:</strong> {{ userProfile.investmentCapital }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.objAndMilestone">
+          <p><strong>Specific business objectives and milestones:</strong> {{ userProfile.objAndMilestone }}</p>
+        </ng-container>
+      </div>
+
+      <div class="partnership" *ngIf="userProfile.lookingFor === 'Partnership' || userProfile.lookingFor === 'Both'">
+        <h1><strong>Partnership Details</strong></h1>
+        <ng-container *ngIf="userProfile?.partnershipPurpose">
+          <p><strong>Purpose of the Partnership:</strong> {{ userProfile.partnershipPurpose }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.partnershipType">
+          <p><strong>Type of partnership:</strong> {{ userProfile.partnershipType }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.noOfPartnership">
+          <p><strong>No of Partners currently available for product:</strong> {{ userProfile.noOfPartnership }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.mutualBenefits">
+          <p><strong>Mutual benefits of the Partnership:</strong> {{ userProfile.mutualBenefits }}</p>
+        </ng-container>
+        
+        <ng-container *ngIf="userProfile?.opportunities">
+          <p><strong>Collaboration opportunities:</strong> {{ userProfile.opportunities }}</p>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back">
+      <button type="button" (click)="navigate('ehome')">Back to Home</button>
+    </div>
+  </div>
+</div>

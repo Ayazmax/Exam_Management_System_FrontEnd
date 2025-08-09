@@ -1,0 +1,32 @@
+<app-hnavbar></app-hnavbar>
+
+<body>
+  <div class="main-container">
+    <div class="side-panel" [ngClass]="{'collapsed': isCollapsed}">
+      <button class="toggle-btn" (click)="toggleSidePanel()">
+        <span class="material-icons">menu</span> 
+      </button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('ihome')">Home</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('ae2')">Find Businesses</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('mposti')">Manage Posts</button>
+    </div>
+
+    <div class="content-container">
+      <h2>User List</h2>
+
+      <div class="user-tiles">
+        <div *ngFor="let user of users" class="user-tile">
+          <img [src]="user.profilePhoto" alt="Profile Photo">
+          <div class="user-details">
+            <h3>Name: {{ user.username }}</h3>
+            <h3>Contact No: {{ user.phone }}</h3>
+            <h3>Business Name: {{ user.businessName }}</h3>
+            <h3>Business Type: {{ user.businessType }}</h3>
+            <button (click)="apply(user)">Apply</button>
+            <button (click)="viewBusinessProfile(user)">view Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

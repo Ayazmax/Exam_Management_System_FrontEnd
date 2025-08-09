@@ -1,0 +1,115 @@
+<app-hnavbar></app-hnavbar>
+
+<div class="main-container">
+  <div class="side-panel" [ngClass]="{ 'collapsed': isCollapsed }">
+    <button class="toggle-btn" (click)="toggleSidePanel()">
+      <span class="material-icons">menu</span>
+    </button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('ihome')">Home</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('vupro')">User Profile</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('upro')">Edit User Profile</button>
+  </div>
+
+  <div class="card-body">
+    <form (ngSubmit)="updateProfile()" enctype="multipart/form-data">
+      <!-- First Name field -->
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input [(ngModel)]="userProfile.firstName" name="firstName" required class="form-control"
+          placeholder="Enter First Name" />
+      </div>
+
+      <!-- Last Name field -->
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input [(ngModel)]="userProfile.lastName" name="lastName" required class="form-control"
+          placeholder="Enter Last Name" />
+      </div>
+
+      <!-- Username field (readonly) -->
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input [(ngModel)]="userProfile.username" name="username" readonly class="form-control"
+          placeholder="Username" />
+      </div>
+
+      <!-- Email field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input [(ngModel)]="userProfile.email" name="email" required type="email" class="form-control"
+          placeholder="Enter Email" />
+      </div>
+
+      <!-- Password field -->
+      <div class="form-group">
+        <label for="password">password</label>
+        <input [(ngModel)]="userProfile.password" name="password" required type="password" class="form-control"
+          placeholder="Enter password" />
+      </div>
+
+      <!-- Phone field -->
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input [(ngModel)]="userProfile.phone" name="phone" required type="text" class="form-control"
+          placeholder="Enter Phone Number" />
+      </div>
+
+      <!-- User Role select field -->
+      <div class="form-group">
+        <label for="userRole">User Role</label>
+        <select [(ngModel)]="userProfile.userRole" name="userRole" class="form-control" required>
+          <option *ngFor="let role of userRoles" [value]="role">{{ role }}</option>
+        </select>
+      </div>
+
+      <!-- Business Name field -->
+      <div class="form-group">
+        <label for="businessName">Business Name</label>
+        <input [(ngModel)]="userProfile.businessName" name="businessName" required class="form-control"
+          placeholder="Enter Business Name" />
+      </div>
+
+      <!-- Business Type field -->
+      <div class="form-group">
+        <label for="businessType">Business Type:</label>
+        <select class="form-control" id="businessType" name="businessType" [(ngModel)]="userProfile.businessType"
+          required>
+          <option value="" disabled selected>Select business type</option>
+          <option value="Technology">Technology</option>
+          <option value="Finance">Finance</option>
+          <option value="Healthcare">Healthcare</option>
+          <option value="Retail">Retail</option>
+          <option value="Manufacturing">Manufacturing</option>
+          <option value="Hospitality">Hospitality</option>
+          <option value="Education">Education</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="interestedBusinessFields">Interested Business Fields</label>
+        <input [(ngModel)]="userProfile.interestedBusinessFields" name="interestedBusinessFields" required class="form-control"
+          placeholder="Enter Interested Business Fields" />
+      </div>
+
+      <div class="form-group">
+        <label for="averageIncome">Average Income</label>
+        <input [(ngModel)]="userProfile.averageIncome" name="averageIncome" required class="form-control"
+          placeholder="Enter Average Income" />
+      </div>
+
+      <!-- Profile Photo field -->
+      <div class="form-group">
+        <label for="profilePhoto">Profile Photo</label>
+        <!-- Display current profile photo -->
+        <img *ngIf="userProfile?.profilePhoto" [src]="userProfile?.profilePhoto" alt="Profile Photo"
+          class="current-profile-photo">
+        <input type="file" id="file" name="file" accept="image/*" (change)="onFileChange($event)" required>
+        <small class="form-text text-danger">Updating Profile photo is required</small>
+      </div>
+
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" [disabled]="!selectedFile">Update Profile</button>
+    </form>
+  </div>

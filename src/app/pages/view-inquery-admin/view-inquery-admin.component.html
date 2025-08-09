@@ -1,0 +1,26 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div class="content-container">
+  <div class="selector-container">
+    <label for="subjectSelector">Filter by Subject:</label>
+    <select id="subjectSelector" name="subjectSelector" [(ngModel)]="selectedSubject" (change)="filterInquiriesBySubject()">
+      <option value="All">All</option>
+      <option value="Business">Business Related</option>
+      <option value="Platform">Platform Related</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+    <div class="boxz" *ngIf="inquiries.length > 0">
+      <div *ngFor="let inquiry of inquiries" class="inquiry">
+        <h3>Subject: {{ inquiry.subject }}</h3>
+        <p>Message: {{ inquiry.message }}</p>
+        <p>Role: {{ inquiry.userRole }}</p>
+        <p>From: {{ inquiry.username }}</p>
+        <button class="apply-btn" (click)="apply(inquiry)">Respond</button>
+        <hr>
+      </div>
+    </div>
+    <div *ngIf="inquiries.length === 0">
+      <p>No inquiries found.</p>
+    </div>
+</div>

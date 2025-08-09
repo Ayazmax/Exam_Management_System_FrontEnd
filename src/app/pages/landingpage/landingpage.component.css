@@ -1,0 +1,63 @@
+.landing-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    height: 100vh;
+    flex-direction: column; /* Stack items vertically */
+}
+
+.neon-container{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.neon-circle {
+    background-color: white;
+    display: inline-block;
+    border: 2px solid #00ff00; /* Green border */
+    border-radius: 50%; /* Makes the shape circular */
+    padding: 60px; /* Adjust padding as needed */
+    animation: neon 1.5s infinite alternate; /* Apply a neon effect animation */
+}
+
+.neon-text {
+    font-size: 60px; /* Adjust the font size as needed */
+    font-weight: bold;
+    color: #3936e9; /* Adjust the color as needed */
+    font-family: 'Arial Black', sans-serif; /* Apply a stylish font */
+    text-transform: uppercase; /* Convert text to uppercase */
+    letter-spacing: 4px; /* Add letter spacing for emphasis */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a subtle text shadow */
+}
+
+.about-text {
+    font-size: 24px; 
+    color: #65B741 ; 
+    margin-top: 20px; 
+    text-align: center; 
+}
+
+.p-container{
+    display: flex; 
+    justify-content: center; /* Center the content horizontally */
+    text-align: center;
+}
+
+.about-paragraph {
+    text-align: center; 
+    margin-top: 50px; 
+    font-size: 18px; 
+    color: #0766AD ; 
+    max-width: 600px; 
+    line-height: 1.6; 
+}
+
+/* Neon animation */
+@keyframes neon {
+    from {
+        box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 70px #00ff00, 0 0 80px #00ff00, 0 0 100px #00ff00, 0 0 150px #00ff00;
+    }
+    to {
+        box-shadow: none;
+    }
+}

@@ -1,0 +1,118 @@
+body {
+    font-family: 'Arial', sans-serif;
+
+  }
+  
+  .side-panel {
+    margin-top: 50px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #0766AD;
+    color: #fff;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: width 0.3s; /* Add transition effect */
+  }
+  
+  .collapsed {
+    width: 50px; 
+  }
+
+  .toggle-btn {
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+    color: #fff;
+    outline: none;
+  }
+  
+  .material-icons{
+    font-size: 24px;
+  }
+  
+  .nav-btn {
+    width: 90%;
+    height: 45px;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #000000;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border: 1px solid #555;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.938); /* Glassy background */
+  }
+  
+  .nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.685); /* Glassy background on hover */
+  }
+  
+  
+  .content-container {
+    margin-left: 200px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    padding-bottom: 50px;
+  }
+  
+  h2 {
+    color: #3936e9;
+  }
+  
+  .profile-details {
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .profile-details p {
+    margin-bottom: 10px;
+  }
+  
+  .back button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .back button:hover {
+    background-color: #0056b3;
+  }
+
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-picture {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }

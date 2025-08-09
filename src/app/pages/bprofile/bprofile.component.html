@@ -1,0 +1,306 @@
+<app-hnavbar></app-hnavbar>
+<div class="main-container">
+  <div class="side-panel" [ngClass]="{'collapsed': isCollapsed}">
+    <button class="toggle-btn" (click)="toggleSidePanel()">
+      <span class="material-icons">menu</span>
+    </button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('ehome')">Home</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('vbpro')">Business Profile</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('bpro')">Edit Business Profile</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('vgoal')">View Goals</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('add-pitch')">Create Business Pitch</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('view-pitch')">View Business Pitch</button>
+  </div>
+
+  <div class="card-body">
+    <form (ngSubmit)="updateProfile()" enctype="multipart/form-data">
+
+      <div class="form-row">
+      <!-- First Name field -->
+      <div class="form-group col-md-3">
+        <label for="firstName">First Name</label>
+        <input [(ngModel)]="userProfile.firstName" name="firstName" required class="form-control"
+          placeholder="Enter First Name" />
+      </div>
+
+      <!-- Last Name field -->
+      <div class="form-group col-md-3" >
+        <label for="lastName">Last Name</label>
+        <input [(ngModel)]="userProfile.lastName" name="lastName" required class="form-control"
+          placeholder="Enter Last Name" />
+      </div>
+
+      <!-- Username field (readonly) -->
+      <div class="form-group col-md-3">
+        <label for="username">Username</label>
+        <input [(ngModel)]="userProfile.username" name="username" readonly class="form-control"
+          placeholder="Username" />
+      </div>
+
+      <!-- Email field -->
+      <div class="form-group col-md-3">
+        <label for="email">Email</label>
+        <input [(ngModel)]="userProfile.email" name="email" required type="email" class="form-control"
+          placeholder="Enter Email" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <!-- Password field -->
+      <div class="form-group col-md-3">
+        <label for="password">password</label>
+        <input [(ngModel)]="userProfile.password" name="password" required type="password" class="form-control"
+          placeholder="Enter password" />
+      </div>
+
+      <!-- Phone field -->
+      <div class="form-group col-md-3">
+        <label for="phone">Phone</label>
+        <input [(ngModel)]="userProfile.phone" name="phone" required type="text" class="form-control"
+          placeholder="Enter Phone Number" />
+      </div>
+
+      <!-- User Role select field -->
+      <div class="form-group col-md-3">
+        <label for="userRole">User Role</label>
+        <select [(ngModel)]="userProfile.userRole" name="userRole" class="form-control" required>
+          <option *ngFor="let role of userRoles" [value]="role">{{ role }}</option>
+        </select>
+      </div>
+
+      <!-- Business Name field -->
+      <div class="form-group col-md-3">
+        <label for="businessName">Business Name</label>
+        <input [(ngModel)]="userProfile.businessName" name="businessName" required class="form-control"
+          placeholder="Enter Business Name" />
+      </div>
+    </div>
+
+      <!-- Business Type field -->
+      <div class="form-group">
+        <label for="businessType">Business Type:</label>
+        <select class="form-control" id="businessType" name="businessType" [(ngModel)]="userProfile.businessType"
+          required>
+          <option value="" disabled selected>Select business type</option>
+          <option value="Technology">Technology</option>
+          <option value="Finance">Finance</option>
+          <option value="Healthcare">Healthcare</option>
+          <option value="Retail">Retail</option>
+          <option value="Manufacturing">Manufacturing</option>
+          <option value="Hospitality">Hospitality</option>
+          <option value="Education">Education</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <!-- Profile Photo field -->
+      <div class="form-group">
+        <label for="profilePhoto">Profile Photo</label>
+        <!-- Display current profile photo -->
+        <img *ngIf="userProfile?.profilePhoto" [src]="userProfile?.profilePhoto" alt="Profile Photo"
+          class="current-profile-photo">
+        <input type="file" id="file" name="file" accept="image/*" (change)="onFileChange($event)" required>
+        <small class="form-text text-danger">Updating Profile photo is required</small>
+      </div>
+
+      <div class="form-row">
+      <!-- Product field -->
+      <div class="form-group col-md-3">
+        <label for="product">Product</label>
+        <input [(ngModel)]="userProfile.product" name="product" class="form-control" placeholder="Enter Product" />
+      </div>
+
+      <!-- Product Description field -->
+      <div class="form-group col-md-3">
+        <label for="productDescription">Product Description</label>
+        <input [(ngModel)]="userProfile.productDescription" name="productDescription" class="form-control"
+          placeholder="Enter Product Description" />
+      </div>
+
+      <!-- Product Uniqueness field -->
+      <div class="form-group col-md-3">
+        <label for="productUniqueness">Product Uniqueness</label>
+        <input [(ngModel)]="userProfile.productUniqueness" name="productUniqueness" class="form-control"
+          placeholder="Enter Product Uniqueness" />
+      </div>
+
+      <!-- Elevator Pitch field -->
+      <div class="form-group col-md-3">
+        <label for="elevatorPitch">Elevator Pitch</label>
+        <input [(ngModel)]="userProfile.elevatorPitch" name="elevatorPitch" class="form-control"
+          placeholder="Enter Elevator Pitch" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <!-- Target Audience field -->
+      <div class="form-group col-md-3">
+        <label for="targetAudience">Target Audience</label>
+        <input [(ngModel)]="userProfile.targetAudience" name="targetAudience" class="form-control"
+          placeholder="Enter Target Audience" />
+      </div>
+
+    <!-- Looking For field -->
+    <div class="form-group col-md-3">
+      <label for="lookingFor">Looking For</label>
+      <select [(ngModel)]="userProfile.lookingFor" name="lookingFor" class="form-control">
+        <option value="Both">Both</option>
+        <option value="Investment">Investment</option>
+        <option value="Partnership">Partnership</option>
+      </select>
+    </div>
+  </div>
+
+    <div *ngIf="userProfile.lookingFor === 'Both' || userProfile.lookingFor === 'Investment'">
+
+      <!-- Investment Product field -->
+      <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="investmentProduct">Investment Product</label>
+        <input [(ngModel)]="userProfile.investmentProduct" name="investmentProduct" class="form-control"
+          placeholder="Enter Investment Product" />
+      </div>
+
+      <!-- Number of Investors field -->
+      <div class="form-group col-md-3">
+        <label for="noOfInvestors">Number of Investors</label>
+        <input [(ngModel)]="userProfile.noOfInvestors" name="noOfInvestors" type="number" class="form-control"
+          placeholder="Enter Number of Investors" />
+      </div>
+
+      <!-- Capacity Available field -->
+      <div class="form-group col-md-3">
+        <label for="capacityAvailable">Capacity Available</label>
+        <input [(ngModel)]="userProfile.capacityAvailable" name="capacityAvailable" type="number" class="form-control"
+          placeholder="Enter Capacity Available" />
+      </div>
+
+      <!-- Investment Plan field -->
+      <div class="form-group col-md-3">
+        <label for="investmentPlan">Investment Plan</label>
+        <textarea [(ngModel)]="userProfile.investmentPlan" name="investmentPlan" class="form-control"
+          placeholder="Enter Investment Plan"></textarea>
+      </div>
+    </div>     
+
+    <div class="form-row">
+      <!-- Investment Required field -->
+      <div class="form-group col-md-3">
+        <label for="investmentRequired">Investment Required</label>
+        <input [(ngModel)]="userProfile.investmentRequired" name="investmentRequired" type="number" class="form-control"
+          placeholder="Enter Investment Required" />
+      </div>
+
+      <!-- Terms of Investment Opportunity field -->
+      <div class="form-group col-md-3">
+        <label for="termsOfInvestmentOpportunity">Terms of Investment Opportunity</label>
+        <textarea [(ngModel)]="userProfile.termsOfInvestmentOpportunity" name="termsOfInvestmentOpportunity"
+          class="form-control" placeholder="Enter Terms of Investment Opportunity"></textarea>
+      </div>
+
+      <!-- ROI field -->
+      <div class="form-group col-md-3">
+        <label for="ROI">ROI</label>
+        <input [(ngModel)]="userProfile.ROI" name="ROI" type="number" class="form-control" placeholder="Enter ROI" />
+      </div>
+
+      <!-- Investment Benefits field -->
+      <div class="form-group col-md-3">
+        <label for="investmentBenefits">Investment Benefits</label>
+        <textarea [(ngModel)]="userProfile.investmentBenefits" name="investmentBenefits" class="form-control"
+          placeholder="Enter Investment Benefits"></textarea>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <!-- Investment Timeline field -->
+      <div class="form-group col-md-3">
+        <label for="investmentTimeline">Investment Timeline</label>
+        <input [(ngModel)]="userProfile.investmentTimeline" name="investmentTimeline" class="form-control"
+          placeholder="Enter Investment Timeline" />
+      </div>
+
+      <!-- Closing Date field -->
+      <div class="form-group col-md-3">
+        <label for="closingDate">Closing Date</label>
+        <input [(ngModel)]="userProfile.closingDate" name="closingDate" type="date" class="form-control"
+          placeholder="Enter Closing Date" />
+      </div>
+
+      <!-- Funding Milestone field -->
+      <div class="form-group col-md-3">
+        <label for="fundingMilestone">Funding Milestone</label>
+        <input [(ngModel)]="userProfile.fundingMilestone" name="fundingMilestone" class="form-control"
+          placeholder="Enter Funding Milestone" />
+      </div>
+
+      <!-- Use of Funds field -->
+      <div class="form-group col-md-3">
+        <label for="useOfFunds">Use of Funds</label>
+        <textarea [(ngModel)]="userProfile.useOfFunds" name="useOfFunds" class="form-control"
+          placeholder="Enter Use of Funds"></textarea>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <!-- Investment Capital field -->
+      <div class="form-group col-md-3">
+        <label for="investmentCapital">Investment Capital</label>
+        <input [(ngModel)]="userProfile.investmentCapital" name="investmentCapital" type="number" class="form-control"
+          placeholder="Enter Investment Capital" />
+      </div>
+
+      <!-- Objective and Milestone field -->
+      <div class="form-group col-md-3">
+        <label for="objAndMilestone">Objective and Milestone</label>
+        <textarea [(ngModel)]="userProfile.objAndMilestone" name="objAndMilestone" class="form-control"
+          placeholder="Enter Objective and Milestone"></textarea>
+      </div>
+      </div>
+    </div>
+
+    <div *ngIf="userProfile.lookingFor === 'Both' || userProfile.lookingFor === 'Partnership'">
+
+      <div class="form-row">
+      <!-- Partnership Purpose field -->
+      <div class="form-group col-md-3">
+        <label for="partnershipPurpose">Partnership Purpose</label>
+        <textarea [(ngModel)]="userProfile.partnershipPurpose" name="partnershipPurpose" class="form-control"
+          placeholder="Enter Partnership Purpose"></textarea>
+      </div>
+
+      <!-- Partnership Type field -->
+      <div class="form-group col-md-3">
+        <label for="partnershipType">Partnership Type</label>
+        <input [(ngModel)]="userProfile.partnershipType" name="partnershipType" class="form-control"
+          placeholder="Enter Partnership Type" />
+      </div>
+
+      <!-- Number of Partnership field -->
+      <div class="form-group col-md-3">
+        <label for="noOfPartnership">Number of Partnership</label>
+        <input [(ngModel)]="userProfile.noOfPartnership" name="noOfPartnership" type="number" class="form-control"
+          placeholder="Enter Number of Partnership" />
+      </div>
+
+      <!-- Mutual Benefits field -->
+      <div class="form-group col-md-3">
+        <label for="mutualBenefits">Mutual Benefits</label>
+        <textarea [(ngModel)]="userProfile.mutualBenefits" name="mutualBenefits" class="form-control"
+          placeholder="Enter Mutual Benefits"></textarea>
+      </div>
+      </div>
+
+      <!-- Opportunities field -->
+      <div class="form-group">
+        <label for="opportunities">Opportunities</label>
+        <textarea [(ngModel)]="userProfile.opportunities" name="opportunities" class="form-control"
+          placeholder="Enter Opportunities"></textarea>
+      </div>
+
+    </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" [disabled]="!selectedFile">Update Profile</button>
+    </form>
+  </div>

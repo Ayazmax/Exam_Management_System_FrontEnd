@@ -1,0 +1,31 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div class="view-advisor">
+    <h2>View Advisors</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+                <th>Advisor Type</th>
+                <th>Experience</th>
+                <th>Qualifications</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let advisor of advisors">
+                <td>{{ advisor.name }}</td>
+                <td>{{ advisor.email }}</td>
+                <td>{{ advisor.contactNumber }}</td>
+                <td>{{ advisor.advisorType }}</td>
+                <td>{{ advisor.experience }}</td>
+                <td>{{ advisor.qualifications }}</td>
+                <td>
+                    <button (click)="deleteAdvisor(advisor.id)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

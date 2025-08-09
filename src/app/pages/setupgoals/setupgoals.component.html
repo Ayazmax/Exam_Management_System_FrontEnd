@@ -1,0 +1,61 @@
+<app-hnavbar></app-hnavbar>
+<body>
+  <div class="main-container">
+    <div class="side-panel" [ngClass]="{'collapsed': isCollapsed}">
+      <button class="toggle-btn" (click)="toggleSidePanel()">
+        <span class="material-icons">menu</span>
+      </button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('ehome')">Home</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('rinquiry')">Raise Inquiry Tickets</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('viewinquiry')">View Inquiries</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('aip')">Apply for Investors & Partners</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('mpost')">Manage Posts</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('fadvisor')">Find Advisors</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('setg')">SetUp Goals and Targets</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('vbpro')">Business Profile</button>
+
+    </div>
+
+    <div class="content-container">
+      <h2>Setup Goals and Targets</h2>
+  
+      <br><br><br>
+  
+      <!-- Form for Setting Up Goals and Targets -->
+      <form>
+        <label for="goalName">Goal Type:</label>
+        <input type="text" id="goalName" name="goalName" required [(ngModel)]="newGoal.goal">
+  
+        <label for="targetAmount">Description:</label>
+        <input type="text" id="targetAmount" name="targetAmount" required [(ngModel)]="newGoal.target">
+  
+        <label for="deadline">Deadline:</label>
+        <input type="date" id="deadline" name="deadline" required [(ngModel)]="newGoal.deadlineDate">
+  
+        <!-- Hidden input field for username -->
+        <input type="hidden" name="username" [(ngModel)]="newGoal.username">
+  
+        <div class="save">
+          <button type="button" (click)="saveGoal()">Save Goal</button>
+        </div>
+      </form>
+  
+      <br>
+  
+      <!-- Curved boxes for displaying saved goals -->
+      <div class="goal-container">
+        <div *ngFor="let goal of goals" class="goal-box" [ngClass]="{'success-box': goal.status === 'Success'}">
+          <p><strong>{{ goal.goal }}</strong></p>
+          <p>Description: {{ goal.target }}</p>
+          <p>Created Date: {{ goal.createdDate }}</p>
+          <p>Deadline: {{ goal.deadlineDate }}</p>
+          <p>Status: {{ goal.status }}</p>
+          <div class="button-container">
+            <button class="done-button" (click)="markAsDone(goal)">&#x2714;</button>
+            <button class="delete-button" (click)="deleteGoal(goal.id)">&#x2716;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

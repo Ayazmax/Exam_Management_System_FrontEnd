@@ -1,0 +1,119 @@
+<h2>User Profile</h2>
+<div class="dialog">
+  <p><strong>Name:</strong> {{ data.username }}</p>
+  <p><strong>Contact No:</strong> {{ data.phone }}</p>
+  <p><strong>Role:</strong> {{ data.userRole }}</p>
+
+  <ng-container *ngIf="data?.product">
+    <p><strong>Product:</strong> {{ data.product }}</p>
+  </ng-container>
+
+  <ng-container *ngIf="data?.productDescription">
+    <p><strong>Product Description:</strong> {{ data.productDescription }}</p>
+  </ng-container>
+
+  <ng-container *ngIf="data?.productUniqueness">
+    <p><strong>Product Uniqueness:</strong> {{ data.productUniqueness }}</p>
+  </ng-container>
+
+  <ng-container *ngIf="data?.elevatorPitch">
+    <p><strong>Elevator Pitch:</strong> {{ data.elevatorPitch }}</p>
+  </ng-container>
+
+  <ng-container *ngIf="data?.targetAudience">
+    <p><strong>Target Audience:</strong> {{ data.targetAudience }}</p>
+  </ng-container>
+
+  <ng-container *ngIf="data?.lookingFor">
+    <p><strong>Currently looking for (Investment/ Partnership)?:</strong> {{ data.lookingFor }}</p>
+  </ng-container>
+  <br><br>
+
+  <div class="investment" *ngIf="data.lookingFor === 'Investment' || data.lookingFor === 'Both'">
+    <h1><strong>Investment Details</strong></h1>
+    <ng-container *ngIf="data?.investmentProduct">
+      <p><strong>For what product they need an investment currently:</strong> {{ data.investmentProduct }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.noOfInvestors">
+      <p><strong>No of Investors currently available for product:</strong> {{ data.noOfInvestors }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.capacityAvailable">
+      <p><strong>Amount of capital currently available for investment:</strong> {{ data.capacityAvailable }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.investmentPlan">
+      <p><strong>Investment Plan:</strong> {{ data.investmentPlan }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.investmentRequired">
+      <p><strong>Required amount of Investments?:</strong> {{ data.investmentRequired }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.termsOfInvestmentOpportunity">
+      <p><strong>Terms of the investment opportunity:</strong> {{ data.termsOfInvestmentOpportunity }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.ROI">
+      <p><strong>Expected return on investment (ROI):</strong> {{ data.ROI }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.investmentBenefits">
+      <p><strong>Benefits of the Investment opportunity:</strong> {{ data.investmentBenefits }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.investmentTimeline">
+      <p><strong>Timeline for the investment:</strong> {{ data.investmentTimeline }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.closingDate">
+      <p><strong>Expected closing date:</strong> {{ data.closingDate }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.fundingMilestone">
+      <p><strong>Funding Milestones:</strong> {{ data.fundingMilestone }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.useOfFunds">
+      <p><strong>Use of Funds:</strong> {{ data.useOfFunds }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.investmentCapital">
+      <p><strong>How the investment capital will be utilized:</strong> {{ data.investmentCapital }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.objAndMilestone">
+      <p><strong>Specific business objectives and milestones:</strong> {{ data.objAndMilestone }}</p>
+    </ng-container>
+  </div>
+
+  <div class="partnership" *ngIf="data.lookingFor === 'Partnership' || data.lookingFor === 'Both'">
+    <h1><strong>Partnership Details</strong></h1>
+    <ng-container *ngIf="data?.partnershipPurpose">
+      <p><strong>Purpose of the Partnership:</strong> {{ data.partnershipPurpose }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.partnershipType">
+      <p><strong>Type of partnership:</strong> {{ data.partnershipType }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.noOfPartnership">
+      <p><strong>No of Partners currently available for product:</strong> {{ data.noOfPartnership }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.mutualBenefits">
+      <p><strong>Mutual benefits of the Partnership:</strong> {{ data.mutualBenefits }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="data?.opportunities">
+      <p><strong>Collaboration opportunities:</strong> {{ data.opportunities }}</p>
+    </ng-container>
+  </div>
+
+  <div class="pitch">
+    <button type="button" (click)="navigate('vbp')">View Business Pitches</button>
+  </div>
+</div>
+
+

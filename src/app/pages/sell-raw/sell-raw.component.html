@@ -1,0 +1,29 @@
+<h2>Add Raw Material</h2>
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="sellerName">Seller Name:</label>
+    <input type="text" id="sellerName" name="sellerName" [(ngModel)]="rawMaterial.sellerName" required>
+  </div>
+  <div>
+    <label for="email">Seller Email:</label>
+    <input type="text" id="email" name="email" [(ngModel)]="rawMaterial.email" required>
+  </div>
+  <div>
+    <label for="materialName">Material Name:</label>
+    <input type="text" id="materialName" name="materialName" [(ngModel)]="rawMaterial.materialName" required>
+  </div>
+  <div>
+    <label for="materialDescription">Material Description:</label>
+    <textarea id="materialDescription" name="materialDescription" [(ngModel)]="rawMaterial.materialDescription" required></textarea>
+  </div>
+  <div>
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" [(ngModel)]="rawMaterial.price" required>
+  </div>
+  <div>
+    <label for="file">Image:</label>
+    <input type="file" id="file" name="file" (change)="onFileSelected($event)" accept="image/*" required>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+

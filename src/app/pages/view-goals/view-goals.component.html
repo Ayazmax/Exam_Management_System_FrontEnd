@@ -1,0 +1,37 @@
+<app-hnavbar></app-hnavbar>
+<body>
+  <div class="main-container">
+    <div class="side-panel" [ngClass]="{'collapsed': isCollapsed}">
+      <button class="toggle-btn" (click)="toggleSidePanel()">
+        <span class="material-icons">menu</span> 
+      </button>
+      <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('ehome')">Home</button>
+      <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('vbpro')">Business Profile</button>
+      <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('bpro')">Edit Business Profile</button>
+      <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('vgoal')">View Goals</button>
+      <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('add-pitch')">Create Business Pitch</button>
+      <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('view-pitch')">View Business Pitch</button>
+    </div>
+
+    <div class="content-container">
+      <h2>Setup Goals and Targets</h2>
+  
+      <br><br><br>
+  
+      <!-- Curved boxes for displaying saved goals -->
+      <div class="goal-container">
+        <div *ngFor="let goal of goals" class="goal-box" [ngClass]="{'success-box': goal.status === 'Success'}">
+          <p><strong>{{ goal.goal }}</strong></p>
+          <p>Description: {{ goal.target }}</p>
+          <p>Created Date: {{ goal.createdDate }}</p>
+          <p>Deadline: {{ goal.deadlineDate }}</p>
+          <p>Status: {{ goal.status }}</p>
+          <div class="button-container">
+            <button class="done-button" (click)="markAsDone(goal)">&#x2714;</button>
+            <button class="delete-button" (click)="deleteGoal(goal.id)">&#x2716;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

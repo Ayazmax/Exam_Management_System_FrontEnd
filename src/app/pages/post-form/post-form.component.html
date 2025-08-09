@@ -1,0 +1,14 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<form (submit)="addPost()">
+    <label for="postContent">Post Content:</label>
+    <textarea id="postContent" name="postContent" placeholder="Type your post here..." [(ngModel)]="postContent"></textarea>
+  
+    <label for="postImage">Choose Image:</label>
+    <input type="file" id="postImage" name="postImage" accept="image/*">
+  
+    <button type="submit">Submit Post</button>
+  </form>

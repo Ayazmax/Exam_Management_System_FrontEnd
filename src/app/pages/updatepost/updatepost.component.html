@@ -1,0 +1,17 @@
+<h1>Update Post</h1>
+<form (ngSubmit)="updatePost()" enctype="multipart/form-data">
+  <input type="hidden" id="postId" name="postId" [(ngModel)]="postId">
+  <div>
+    <label for="content">Content:</label><br>
+    <textarea id="content" name="content" rows="4" cols="50" [(ngModel)]="content" required></textarea>
+  </div><br>
+  <div>
+    <label for="image">Image:</label><br>
+    <img id="postImage" [src]="imageSrc" alt="Post Image" style="max-width: 300px;"><br>
+    <input type="file" id="file" name="file" accept="image/*" (change)="onFileSelected($event)">
+  </div><br>
+  <div>
+    <input type="hidden" id="creatorUsername" name="creatorUsername" [(ngModel)]="creatorUsername">
+  </div><br>
+  <button type="submit">Update Post</button>
+</form>

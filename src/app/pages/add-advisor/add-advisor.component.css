@@ -1,0 +1,51 @@
+/* add-advisor.component.css */
+.add-advisor {
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  .add-advisor h2 {
+    text-align: center;
+  }
+  
+  .add-advisor form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-advisor .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .add-advisor label {
+    font-weight: bold;
+  }
+  
+  .add-advisor input[type="text"],
+  .add-advisor textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .add-advisor input[type="file"] {
+    width: 100%;
+    padding: 8px;
+  }
+  
+  .add-advisor button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .add-advisor button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,0 +1,33 @@
+<app-hnavbar></app-hnavbar>
+<div class="main-container">
+  <div class="side-panel" [ngClass]="{ 'collapsed': isCollapsed }">
+    <button class="toggle-btn" (click)="toggleSidePanel()">
+      <span class="material-icons">menu</span>
+    </button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('phome')">Home</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('vp-pro')">User Profile</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('p-pro')">Edit User Profile</button>
+  </div>
+
+  <div class="content-container">
+    <h2>User Profile</h2>
+
+    <!-- Profile Details Section -->
+    <div class="profile-details">
+      <!-- Display Profile Picture -->
+      <div class="profile-picture">
+        <img [src]="userProfile?.profilePhoto" alt="Profile Picture" >
+      </div>
+
+      <p><strong>User Name:</strong> {{ userProfile?.username }}</p>
+      <p><strong>Email:</strong> {{ userProfile?.email }}</p>
+      <p><strong>Role:</strong> {{ userProfile?.userRole }}</p>
+      <p><strong>Contact No:</strong> {{ userProfile?.phone }}</p>
+      <p><strong>Interested Business Fields:</strong> {{ userProfile?.interestedBusinessFields }}</p>
+      <p><strong>Average Income:</strong> {{ userProfile?.averageIncome }}</p>
+      <p *ngIf="!userProfile?.username || !userProfile?.email || !userProfile?.userRole || !userProfile?.phone || !userProfile?.interestedBusinessFields || !userProfile?.averageIncome">
+        <span style="color: red;">Empty Fields should be updated with Edit User Profile</span>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+.hnavbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #0766AD ;
+  color: #fff;
+  padding: 10px 20px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-left img {
+  width: 65px;
+  height: auto;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.trading-button,
+.profile-button,
+.logout-button {
+  cursor: pointer;
+  padding: 8px 16px; /* Adjust button size here */
+  border: none;
+  border-radius: 5px;
+  font-size: 14px; 
+}
+
+.trading-button,
+.profile-button {
+  background-color: #007bff; /* Blue color for View Profile button */
+  color: #fff;
+  transition: background-color 0.3s;
+  margin-right: 5px;
+}
+
+.trading-button:hover{
+  background-color: #0056b3; 
+}
+
+.profile-button:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+
+.logout-button {
+  background-color: #ff0000; /* Red color for Logout button */
+  color: #fff;
+  font-size: 16px; /* Adjust font size for Logout button */
+}
+
+.logout-button .material-icons {
+  font-size: 20px; /* Adjust size of material icon */
+  vertical-align: middle;
+  margin-right: 5px;
+}

@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="raw-material-tiles">
+      <div class="raw-material-tile" *ngFor="let material of rawMaterials">
+        <img [src]="material.materialImage" alt="Material Image">
+        <h3><strong>Name:</strong> {{ material.materialName }}</h3>
+        <p><strong>Description:</strong> {{ material.materialDescription }}</p>
+        <p><strong>Seller:</strong> {{ material.sellerName }}</p>
+        <p><strong>Price:</strong> {{ material.price }}</p>
+        <button class="buy-button" (click)="buy(material.email, material.materialName)">Buy</button>
+      </div>
+    </div>
+  </div>
+  

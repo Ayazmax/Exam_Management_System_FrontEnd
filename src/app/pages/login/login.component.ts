@@ -1,72 +1,74 @@
-import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { LoginService } from '../services/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  loginData = {
-    username: '',
-    password: '',
-  };
+  loginData: any = {};
 
-  constructor(private snack:MatSnackBar, private login:LoginService, private router:Router) { }
-
-  ngOnInit(): void {
-  }
+  constructor(private authService: AuthService, private router: Router) { }
 
   formSubmit() {
-    console.log("Login form Submitted");
-
-    if(this.loginData.username.trim()=='' || this.loginData.username == null) {
-      this.snack.open("Username is Required", 'Ok');
-      return;
-    }else if(this.loginData.password.trim()=='' || this.loginData.password==null) {
-      this.snack.open("Password is Required", 'Ok');
+    if (!this.loginData.username || !this.loginData.password) {
+      // Handle validation for required fields
       return;
     }
-      //request to server to generate token
-      this.login.generateToken(this.loginData).subscribe(
-        (data:any)=>{
-          console.log('success');
-          console.log(data);
 
-          //Login...
-          this.login.loginUser(data.token);
-
-          this.login.getCurrentUser().subscribe(
-            (user:any)=> {
-              this.login.setUser(user);
-              console.log(user);
-              //redirrect to admin Dashboard for Admin
-              //redirrect to user Dashboard for user
-              if(this.login.getUserRole()=="ADMIN") {
-                //admin dashboard
-                // window.location.href='/admin';
-                this.router.navigate(['admin'])
-                this.login.loginStatusSubject.next(true);
-              }else if(this.login.getUserRole()=="USER") {
-                //user dashboard
-                // window.location.href='/user-dashboard';
-                this.router.navigate(['user-dashboard/0'])
-                this.login.loginStatusSubject.next(true);
-              }else {
-                this.login.logout();
-              }
-            }
-          );
-        },
-        (error)=>{
-          console.log("Error !");
-          console.log(error);
-          this.snack.open("Invalid Credentials", 'Try Again');
-        }
-      );
+    this.authService.login(this.loginData).subscribe(
+      (response: any) => {
+        console.log('Login successful:', response);
+        // Save user data to local storage
+        const userData = {
+          username: response.username,
+          userRole: response.userRole // Add user role to the user data
+        };
+        localStorage.setItem('currentUser', JSON.stringify(userData));
+        // Redirect based on user role
+        this.redirectBasedOnRole(response.userRole);
+      },
+      (error) => {
+        console.error('Login failed:', error);
+        // Show error alert
+        this.showErrorAlert();
+      }
+    );
   }
 
+  redirectBasedOnRole(userRole: string) {
+    switch (userRole) {
+      case 'Investor':
+        this.router.navigate(['/ihome']);
+        break;
+      case 'Business Partner':
+        this.router.navigate(['/phome']);
+        break;
+      case 'Admin':
+        this.router.navigate(['/adminpanel']);
+        break;
+      case 'Entrepreneur':
+      case 'Startup Owner':
+        this.router.navigate(['/ehome']);
+        break;
+      default:
+        // Redirect to a default route in case of an unknown role
+        this.router.navigate(['/default']);
+        break;
+    }
+  }
+
+  showErrorAlert() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Login Failed',
+      text: 'Invalid username or password. Please try again.',
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'OK'
+    });
+  }
 }

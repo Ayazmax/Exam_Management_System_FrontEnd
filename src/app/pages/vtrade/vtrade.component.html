@@ -1,0 +1,43 @@
+
+
+<div class="view-trades">
+  <br>
+  <h3>View Trades</h3>
+
+  <!-- Search by Items Section -->
+  <div class="search-by-items">
+    <label for="searchItem">Search by Item:</label>
+    <input type="text" id="searchItem" name="searchItem" placeholder="Enter item name"><br>
+    <button (click)="searchByItem()">Search</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Seller Name</th>
+        <th>Buyer Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Example Rows -->
+      <tr>
+        <td>Example Item 1</td>
+        <td>John Doe</td>
+        <td>Jane Doe</td>
+      </tr>
+      <tr>
+        <td>Example Item 2</td>
+        <td>Alice Smith</td>
+        <td>Bob Johnson</td>
+      </tr>
+
+      <!-- Use *ngFor to loop through trades and display each row -->
+      <tr *ngFor="let trade of trades">
+        <td>{{ trade.itemName }}</td>
+        <td>{{ trade.seller }}</td>
+        <td>{{ trade.buyer }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

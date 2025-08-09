@@ -1,0 +1,24 @@
+<div class="navbar">
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo">
+  </div>
+  <ul class="nav-links">
+    <li><a href="http://localhost:4200/adminpanel">Home</a></li>
+    <li class="dropdown">
+      <a class="dropbtn">Manage Inquiries</a>
+      <div class="dropdown-content">
+        <a href="http://localhost:4200/viewinqueryadmin">View Inquiries</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a class="dropbtn">Manage Advisors</a>
+      <div class="dropdown-content">
+        <a href="http://localhost:4200/viewadvisor">View Advisors</a>
+        <a href="http://localhost:4200/addadvisor">Add Advisor</a>
+      </div>
+    </li>
+  </ul>
+  <button class="logout-button" (click)="logout()">
+    <span class="material-icons">logout</span>
+  </button>
+</div>

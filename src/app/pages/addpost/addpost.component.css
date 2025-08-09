@@ -1,0 +1,58 @@
+/* addpost.component.css */
+
+.addpost-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.addpost-form {
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.addpost-form .form-group {
+    margin-bottom: 20px;
+}
+
+.addpost-form .form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.addpost-form .form-group input[type="text"],
+.addpost-form .form-group input[type="file"],
+.addpost-form .form-group textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.addpost-form .form-group textarea {
+    height: 100px;
+}
+
+.addpost-form .form-group input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.addpost-form .form-group input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.addpost-form .error-message {
+    color: red;
+    font-size: 14px;
+}

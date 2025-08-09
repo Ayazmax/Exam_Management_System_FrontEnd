@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Ratings</h1>
+<div mat-dialog-content>
+  <ul>
+    <li *ngFor="let rating of ratings">
+      <span>{{ rating.rater }}</span>: <span>{{ rating.value }}/5</span>
+    </li>
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>
+

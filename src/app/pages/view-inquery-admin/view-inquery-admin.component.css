@@ -1,0 +1,52 @@
+.content-container {
+    margin-top: 90px;
+    margin-left: 35%;
+  }
+
+  .boxz{
+    width: 600px;
+    text-align: center;
+  }
+  
+  .inquiry {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+  .inquiry h3 {
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .inquiry p {
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  button.apply-btn {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  /* Apply button hover effect */
+  button.apply-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }

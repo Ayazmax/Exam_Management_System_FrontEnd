@@ -1,95 +1,81 @@
+<app-lsnavbar></app-lsnavbar>
 <div class="bootstrap-wrapper">
-
     <div class="container">
-
-        <div class="row" style="margin-top: 20px;">
-
+        <div class="row mt20">
             <div class="col-md-6 offset-md-3">
-
-              <mat-card>
-                <div class="container text-center">
-                    <img src="../../../assets/exam.png" alt="" width="80px" height="80px">
-                </div>
-
-                <h1 class="text-center">User Registration</h1>
-
-                <!-- {{user | json}} -->
-
-                <form (ngSubmit)="formSubmit()">
-                    <!-- Username field -->
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Username</mat-label>
-                        <input
-                        [(ngModel)]="user.username"
-                        name="username"
-                         required matInput placeholder="Enter Here">
-                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                        <mat-hint>Username Must Unique</mat-hint>
-                      </mat-form-field>
-
-                    <!-- Password field -->
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Password</mat-label>
-                        <input
-                        [(ngModel)]="user.password"
-                        name="password"
-                        required type="password" matInput placeholder="Enter Here">
-                        <mat-icon matSuffix>lock</mat-icon>
-                      </mat-form-field>
-
-                    <!-- First name field -->
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>First Name</mat-label>
-                        <input
-                        [(ngModel)]="user.firstName"
-                        name="firstName"
-                        required matInput placeholder="Enter Here">
-                        <mat-icon matSuffix>person</mat-icon>
-                      </mat-form-field>
-                    <!-- Last name field -->
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Last Name</mat-label>
-                        <input
-                        [(ngModel)]="user.lastName"
-                        name="lastName"
-                        required matInput placeholder="Enter Here">
-                        <mat-icon matSuffix>person</mat-icon>
-                      </mat-form-field>
-                    <!-- email field -->
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Email</mat-label>
-                        <input
-                        [(ngModel)]="user.email"
-                        name="email"
-                        required type="email" matInput placeholder="Enter Here">
-                        <mat-icon matSuffix>email</mat-icon>
-                      </mat-form-field>
-                    <!-- phone number field -->
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Phone Number</mat-label>
-                        <input
-                        [(ngModel)]="user.phone"
-                        name="phone"
-                        required type="tel" matInput placeholder="Enter Here">
-                        <mat-icon matSuffix>phone</mat-icon>
-                      </mat-form-field>
-
-                    <!-- buttons -->
+                <mat-card class="mt20">
                     <div class="container text-center">
-
-                        <button type="submit" mat-raised-button color="primary">Register</button>
-                        <button type="reset" style="margin-left: 20px;" mat-raised-button color="warn">Clear</button>
-
+                        <img src="../../../assets/exam-login.png" alt="" width="90px" height="90px">
                     </div>
+                    <h1 class="text-center">User Registration</h1>
 
-                </form>
+                    <form class="register-form" (ngSubmit)="submitForm()" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" name="username" [(ngModel)]="userData.username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="userData.password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName">First Name:</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="userData.firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name:</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="userData.lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="userData.email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone:</label>
+                            <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="userData.phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="businessName">Business Name:</label>
+                            <input type="text" class="form-control" id="businessName" name="businessName" [(ngModel)]="userData.businessName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="businessType">Business Type:</label>
+                            <select class="form-control" id="businessType" name="businessType" [(ngModel)]="userData.businessType" required>
+                                <option value="" disabled selected>Select business type</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Healthcare">Healthcare</option>
+                                <option value="Retail">Retail</option>
+                                <option value="Manufacturing">Manufacturing</option>
+                                <option value="Hospitality">Hospitality</option>
+                                <option value="Education">Education</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="userRole">User Role:</label>
+                            <select class="form-control" id="userRole" name="userRole" [(ngModel)]="userData.userRole" required>
+                                <option value="" disabled selected>Select user role</option>
+                                <option value="Investor">Investor</option>
+                                <option value="Entrepreneur">Entrepreneur</option>
+                                <option value="Business Partner">Business Partner</option>
+                                <option value="Startup Owner">Startup Owner</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image:</label>
+                            <input type="file" class="form-control-file" id="image" name="image" (change)="onFileSelected($event)" accept="image/*" required>
+                        </div>
+                        <div class="container text-center">
+                            <button type="submit" class="btn btn-primary" [disabled]="!formValid">Register</button>
+                        </div>
+                    </form>
 
-              </mat-card>
-
+                    <div class="container text-center mt20">
+                        <p>If you have an Account <a href="http://localhost:4200/login">Login</a></p>
+                    </div>
+                </mat-card>
             </div>
-
         </div>
-
     </div>
-
 </div>

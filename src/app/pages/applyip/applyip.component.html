@@ -1,0 +1,47 @@
+<app-hnavbar></app-hnavbar>
+
+<body>
+  <div class="main-container">
+    <div class="side-panel" [ngClass]="{'collapsed': isCollapsed}">
+      <button class="toggle-btn" (click)="toggleSidePanel()">
+        <span class="material-icons">menu</span>
+      </button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('ehome')">Home</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('rinquiry')">Raise Inquiry Tickets</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('viewinquiry')">View Inquiries</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('aip')">Apply for Investors & Partners</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('mpost')">Manage Posts</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('fadvisor')">Find Advisors</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('setg')">SetUp Goals and Targets</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('vbpro')">Business Profile</button>
+    </div>
+
+    <div class="content-container">
+      <h2>User List</h2>
+      
+      <!-- Role Selector -->
+      <div class="role-selector">
+        <label for="role">Select Role:</label>
+        <select id="role" name="role" [(ngModel)]="selectedUserRole" (change)="filterUsersByRole()">
+          <option value="All">All</option>
+          <option value="Investor">Investor</option>
+          <option value="Business Partner">Business Partner</option>
+        </select>
+      </div>
+      
+      <!-- User Tiles -->
+      <div class="user-tiles">
+        <div *ngFor="let user of filteredUsers" class="user-tile">
+          <img [src]="user.profilePhoto" alt="Profile Photo">
+          <div class="user-details">
+            <h3>Name: {{ user.username }}</h3>
+            <h3>Contact No: {{ user.phone }}</h3>
+            <h3>Role: {{ user.userRole }}</h3>
+            <button (click)="apply(user)">Apply</button>
+            <button (click)="viewProfile(user)">view Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>    
+  </div>
+</body>

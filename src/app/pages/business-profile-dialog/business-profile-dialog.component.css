@@ -1,0 +1,54 @@
+.dialog {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 2px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dialog h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .dialog p {
+    margin: 0;
+  }
+  
+  .dialog strong {
+    font-weight: bold;
+  }
+  
+  .investment,
+  .partnership {
+    text-align: center;
+  }
+  
+  .investment h1,
+  .partnership h1 {
+    color: #0766AD;
+    margin-bottom: 10px;
+  }
+  
+  .pitch {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .pitch button {
+    width: 200px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pitch button:hover {
+    background-color: #0056b3;
+  }
+  

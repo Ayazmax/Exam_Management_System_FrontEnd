@@ -1,0 +1,60 @@
+/* Styles for the View Trades component */
+
+.view-trades {
+    margin: 20px;
+  }
+  
+  /* Styles for the Search by Items Section */
+  
+  .search-by-items {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .search-by-items label {
+    margin-right: 10px;
+  }
+  
+  .search-by-items input {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .search-by-items button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .search-by-items button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styles for the Table */
+  
+  table {
+    width: 60%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-left: 20%;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  

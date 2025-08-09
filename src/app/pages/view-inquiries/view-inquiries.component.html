@@ -1,0 +1,43 @@
+<app-hnavbar></app-hnavbar>
+<div class="main-container">
+    <div class="side-panel" [ngClass]="{'collapsed': isCollapsed}">
+      <button class="toggle-btn" (click)="toggleSidePanel()">
+        <span class="material-icons">menu</span>
+      </button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('ehome')">Home</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('rinquiry')">Raise Inquiry Tickets</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('viewinquiry')">View Inquiries</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('aip')">Apply for Investors & Partners</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('mpost')">Manage Posts</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('fadvisor')">Find Advisors</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('setg')">SetUp Goals and Targets</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('vbpro')">Business Profile</button>
+    </div>
+  
+    <div class="content-container">
+
+      <div class="selector-container">
+        <label for="subjectSelector">Filter by Subject:</label>
+        <select id="subjectSelector" name="subjectSelector" [(ngModel)]="selectedSubject" (change)="filterInquiriesBySubject()">
+          <option value="All">All</option>
+          <option value="Business">Business Related</option>
+          <option value="Platform">Platform Related</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+  
+      <div class="boxz" *ngIf="inquiries.length > 0">
+        <div *ngFor="let inquiry of inquiries" class="inquiry">
+          <h3>Subject: {{ inquiry.subject }}</h3>
+          <p>Message: {{ inquiry.message }}</p>
+          <p>Role: {{ inquiry.userRole }}</p>
+          <p>From: {{ inquiry.username }}</p>
+          <hr>
+        </div>
+      </div>
+      <div *ngIf="inquiries.length === 0">
+        <p>No inquiries found.</p>
+      </div>
+    </div>
+  </div>
+  

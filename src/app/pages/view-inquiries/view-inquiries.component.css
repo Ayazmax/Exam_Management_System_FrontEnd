@@ -1,0 +1,90 @@
+/* Add your styles here */
+.main-container {
+    display: flex;
+  }
+  
+  .side-panel {
+    margin-top: 50px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #0766AD;
+    color: #fff;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: width 0.3s; /* Add transition effect */
+  }
+  
+  .collapsed {
+    width: 50px; /* Collapse the side panel */
+  }
+  
+  .toggle-btn {
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+    color: #fff;
+    outline: none;
+  }
+  
+  .material-icons {
+    font-size: 24px;
+  }
+  
+  .nav-btn {
+    width: 95%;
+    height: 58px;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #000000;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border: 1px solid #555;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.938); /* Glassy background */
+  }
+  
+  .nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.685); /* Glassy background on hover */
+  }
+
+  
+  .content-container {
+    margin-top: 90px;
+    margin-left: 42%;
+  }
+
+  .boxz{
+    width: 600px;
+  }
+  
+  .inquiry {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+  .inquiry h3 {
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .inquiry p {
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  

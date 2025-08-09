@@ -1,0 +1,135 @@
+.side-panel {
+  margin-top: 50px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #0766AD;
+  color: #fff;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: width 0.3s; /* Add transition effect */
+}
+
+.collapsed {
+  width: 50px; 
+}
+
+.toggle-btn {
+  width: 100%;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+  color: #fff;
+  outline: none;
+}
+
+.material-icons {
+  font-size: 24px; 
+}
+
+.nav-btn {
+  width: 90%;
+  height: 45px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #000000;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid #555;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.938); /* Glassy background */
+}
+
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.685); /* Glassy background on hover */
+}
+
+.main-container {
+  margin-top: 50px;
+  margin-left: 200px;
+  padding: 20px;
+  padding-bottom: 50px;
+  transition: margin-left 0.3s ease;
+}
+
+.card-body {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-color: #f8f9fa;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+input[type="file"] { /* Add input[type="file"] to apply styles to file input */
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+input[type="file"] {
+  display: inline-block; /* Ensure file input is visible */
+}
+
+textarea{
+  height: 38px;
+}
+
+
+.current-profile-photo {
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.form-text {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.875rem;
+  color: #dc3545;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+.btn-primary:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}

@@ -1,0 +1,63 @@
+<app-hnavbar></app-hnavbar>
+
+<body>
+  <div class="main-container">
+    <div class="side-panel" [ngClass]="{'collapsed': isCollapsed}">
+      <button class="toggle-btn" (click)="toggleSidePanel()">
+        <span class="material-icons">menu</span>
+      </button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('ehome')">Home</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('rinquiry')">Raise Inquiry Tickets</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('viewinquiry')">View Inquiries</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('aip')">Apply for Investors & Partners</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('mpost')">Manage Posts</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('fadvisor')">Find Advisors</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('setg')">SetUp Goals and Targets</button>
+      <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('vbpro')">Business Profile</button>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="content-container">
+    <h2>Find Advisors</h2>
+
+    <!-- type Selector -->
+    <div class="advisorType-selector">
+      <label for="advisorType">Select Type:</label>
+      <select id="advisorType" name="advisorType" [(ngModel)]="selectedAdvisorType" (change)="filterAdvisorsByType()">
+        <option value="All">All</option>
+        <option value="HR">HR</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Finance">Finance</option>
+      </select>
+    </div>
+
+    <!-- Advisor List -->
+    <div class="advisor-list">
+      <div class="advisor-details-box" *ngFor="let advisor of filteredAdvisors">
+        <div class="profile-picture">
+          <img [src]="advisor.imagePath" alt="Advisor Profile Picture">
+        </div>
+        <br><br><br>
+        <div class="detail-item">
+          <strong>Advisor Name:</strong> <span>{{ advisor.name }}</span>
+        </div>
+        <div class="detail-item">
+          <strong>Advisor Email:</strong> <span>{{ advisor.email }}</span>
+        </div>
+        <div class="detail-item">
+          <strong>Advisor Type:</strong> <span>{{ advisor.advisorType }}</span>
+        </div>
+        <div class="detail-item">
+          <strong>Contact Info:</strong> <span>{{ advisor.contactNumber }}</span>
+        </div>
+        <div class="detail-item">
+          <strong>Qualification:</strong> <span>{{ advisor.qualifications }}</span>
+        </div>
+        <!-- Apply Button -->
+        <button class="apply-btn" (click)="apply(advisor.email)">Contact</button>
+      </div>
+    </div>
+  </div>
+</body>

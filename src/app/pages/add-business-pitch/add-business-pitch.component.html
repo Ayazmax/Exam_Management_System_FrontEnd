@@ -1,0 +1,55 @@
+<app-hnavbar></app-hnavbar>
+<div class="main-container">
+  <div class="side-panel" [ngClass]="{'collapsed': isCollapsed}">
+    <button class="toggle-btn" (click)="toggleSidePanel()">
+      <span class="material-icons">menu</span> 
+    </button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('ehome')">Home</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('vbpro')">Business Profile</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('bpro')">Edit Business Profile</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('vgoal')">View Goals</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('add-pitch')">Create Business Pitch</button>
+    <button class="nav-btn" *ngIf="!isCollapsed"  (click)="navigate('view-pitch')">View Business Pitch</button>
+  </div>
+    <div class="content-container">
+      <h2>Create Business Pitch</h2>
+      <form (submit)="submitForm()" enctype="multipart/form-data">
+        <input type="hidden" id="username" name="username" [(ngModel)]="formData.username" required>
+        
+        <label for="pitchTitle">Pitch Title:</label>
+        <input type="text" id="pitchTitle" name="pitchTitle" [(ngModel)]="formData.pitchTitle" required>
+      
+        <label for="pitchDescription">Pitch Description:</label>
+        <textarea id="pitchDescription" name="pitchDescription" rows="4" [(ngModel)]="formData.pitchDescription" required></textarea>
+      
+        <label for="problemStatement">Problem Statement:</label>
+        <textarea id="problemStatement" name="problemStatement" rows="4" [(ngModel)]="formData.problemStatement" required></textarea>
+      
+        <label for="solution">Solution:</label>
+        <textarea id="solution" name="solution" rows="4" [(ngModel)]="formData.solution" required></textarea>
+      
+        <label for="targetMarket">Target Market:</label>
+        <textarea id="targetMarket" name="targetMarket" rows="4" [(ngModel)]="formData.targetMarket" required></textarea>
+      
+        <label for="marketOpportunity">Market Opportunity:</label>
+        <textarea id="marketOpportunity" name="marketOpportunity" rows="4" [(ngModel)]="formData.marketOpportunity" required></textarea>
+      
+        <label for="businessModel">Business Model:</label>
+        <textarea id="businessModel" name="businessModel" rows="4" [(ngModel)]="formData.businessModel" required></textarea>
+      
+        <label for="marketingAndSalesStrategy">Marketing & Sales Strategy:</label>
+        <textarea id="marketingAndSalesStrategy" name="marketingAndSalesStrategy" rows="4" [(ngModel)]="formData.marketingAndSalesStrategy" required></textarea>
+      
+        <label for="financialProjections">Financial Projections:</label>
+        <textarea id="financialProjections" name="financialProjections" rows="4" [(ngModel)]="formData.financialProjections" required></textarea>
+      
+        <label for="fundingRequirements">Funding Requirements:</label>
+        <textarea id="fundingRequirements" name="fundingRequirements" rows="4" [(ngModel)]="formData.fundingRequirements" required></textarea>
+      
+        <label for="milestonesAndTimeline">Milestones & Timeline:</label>
+        <textarea id="milestonesAndTimeline" name="milestonesAndTimeline" rows="4" [(ngModel)]="formData.milestonesAndTimeline" required></textarea>
+      
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+</div>

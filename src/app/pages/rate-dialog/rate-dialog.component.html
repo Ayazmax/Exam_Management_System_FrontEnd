@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Rate Post</h1>
+<div mat-dialog-content>
+  <p>Please rate this post:</p>
+  <mat-form-field>
+    <mat-label>Rating</mat-label>
+    <!-- Use a dropdown or radio buttons to allow the user to select a rating -->
+    <mat-select [(ngModel)]="ratingValue" required>
+      <mat-option value="1">1</mat-option>
+      <mat-option value="2">2</mat-option>
+      <mat-option value="3">3</mat-option>
+      <mat-option value="4">4</mat-option>
+      <mat-option value="5">5</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onRate()">Rate</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</div>

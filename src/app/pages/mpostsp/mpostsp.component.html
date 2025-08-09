@@ -1,0 +1,72 @@
+<app-hnavbar></app-hnavbar>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+
+    <div class="profile-header">
+        <div class="cover-photo">
+            <img src="../../../assets/logo.png" alt="Cover Photo">
+        </div>
+        <div class="profile-content">
+            <div class="profile-picture">
+                <img [src]="userProfile?.profilePhoto" alt="Profile Picture" >
+            </div>
+            <div class="profile-name">
+                <p>{{ userProfile?.username }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+      <div class="side-panel" [ngClass]="{'collapsed': isCollapsed}">
+        <button class="toggle-btn" (click)="toggleSidePanel()">
+            <span class="material-icons">menu</span>
+        </button>
+        <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('phome')">Home</button>
+        <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('ae')">Find Enterpreneur</button>
+        <button class="nav-btn" *ngIf="!isCollapsed" (click)="navigate('mpostp')">Manage Posts</button>
+      </div>
+    </div>
+
+    <div class="content-container">
+        <br><br>
+        <div class="home-container">
+            <div class="add">
+                <button type="add"(click)="navigate('add')">Add Post</button>
+            </div>
+            
+            <!-- Loop through posts and display each post -->
+            <div *ngFor="let post of posts" class="post">
+                <span class="material-icons edit-icon" (click)="editPost(post.id, post.imagePath, post.content)">edit</span>
+                <span class="material-icons delete-icon" (click)="deletePost(post.id)">delete</span>
+                <h3><img [src]="userProfile?.profilePhoto" alt="Profile Photo" style="width: 30px; height: 30px; border-radius: 50%;"> {{ post.creatorUsername }}</h3>
+
+                <!-- Image Section -->
+                <div class="post-image">
+                    <img [src]="'http://localhost:8080/api/posts/images/' + post.imagePath" alt="Image Description">
+                </div>
+
+                <!-- Post Content -->
+                <p>{{ post.content }}</p>
+
+                <!-- Rate Button Section -->
+                <div class="like">
+                    <button (click)="viewRatings(post.id)">View Ratings</button>
+                </div>
+
+                <!-- Review Section -->
+                <div class="comments" [class.comments-open]="isCommentsOpen">
+                    <h4>Reviews:</h4>
+                    <ul class="comment-list">
+                        <li *ngFor="let comment of post.comments">
+                            {{ comment.commenterUsername }}: {{ comment.comment }}
+                        </li>
+                    </ul>
+                    <button class="view-reviews-btn" (click)="openReviewsDialog(post.comments)">View Reviews</button>
+                    <!-- Add a form for users to submit new Review -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

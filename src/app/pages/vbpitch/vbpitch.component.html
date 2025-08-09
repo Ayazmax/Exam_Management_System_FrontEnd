@@ -1,0 +1,42 @@
+<app-hnavbar></app-hnavbar>
+<div class="main-container">
+    <div class="content-container">
+        <h2>View My Business Pitches</h2>
+        <div class="pitch-cards">
+          <div class="business-pitch-card" *ngFor="let pitch of businessPitches">
+            <h3>{{ pitch.pitchTitle }}</h3>
+            <div class="pitch-info">
+              <label>Description:</label>
+              <span>{{ pitch.pitchDescription }}</span>
+    
+              <label>Problem Statement:</label>
+              <span>{{ pitch.problemStatement }}</span>
+    
+              <label>Solution:</label>
+              <span>{{ pitch.solution }}</span>
+    
+              <label>Target Market:</label>
+              <span>{{ pitch.targetMarket }}</span>
+    
+              <label>Market Opportunity:</label>
+              <span>{{ pitch.marketOpportunity }}</span>
+    
+              <label>Business Model:</label>
+              <span>{{ pitch.businessModel }}</span>
+    
+              <label>Marketing & Sales Strategy:</label>
+              <span>{{ pitch.marketingAndSalesStrategy }}</span>
+    
+              <label>Financial Projections:</label>
+              <span>{{ pitch.financialProjections }}</span>
+    
+              <label>Funding Requirements:</label>
+              <span>{{ pitch.fundingRequirements }}</span>
+    
+              <label>Milestones & Timeline:</label>
+              <span>{{ pitch.milestonesAndTimeline }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,156 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .side-panel {
+    margin-top: 50px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #0766AD;
+    color: #fff;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: width 0.3s; /* Add transition effect */
+  }
+  
+  .collapsed {
+    width: 50px; /* Collapse the side panel */
+  }
+  
+  .toggle-btn {
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+    color: #fff;
+    outline: none;
+  }
+  
+  .material-icons {
+    font-size: 24px;
+  }
+  
+  .nav-btn {
+    width: 95%;
+    height: 58px;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #000000;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border: 1px solid #555;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.938); /* Glassy background */
+  }
+  
+  .nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.685); /* Glassy background on hover */
+  }
+
+  .content-container {
+    margin-left: 200px; /* Adjust the initial margin */
+    padding: 20px;
+    transition: margin-left 0.3s ease; /* Add margin-left transition */
+    padding-bottom: 50px;
+  }
+  
+  .content-container form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  /* Add hover effect for the form */
+  .content-container:hover {
+    margin-left: 250px; /* Adjust the expanded margin */
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .save button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Add background-color and transform transitions */
+    margin-top: 10px; /* Adjust the top margin */
+  }
+  
+  .save button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Add a slight scale effect on hover */
+  }
+
+  .goal-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .goal-box {
+    width: 250px;
+    height: 200px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 0px;
+    text-align: center;
+    border: 2px solid #3936e9; 
+    border-color:#3936e9;
+  }
+
+  .goal-box:hover {
+    background-color: #e5f557; /* Apply hover effect to the goal boxes */
+  }
+
+  .success-box {
+    background-color: #e5f557;
+  }
+
+  .done-button,
+.delete-button {
+  width: 60px;
+  padding: 10px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.done-button {
+  background-color: #28a745; /* Green color for "Done" button */
+}
+
+.delete-button {
+  background-color: #dc3545; /* Red color for "Delete" button */
+}
